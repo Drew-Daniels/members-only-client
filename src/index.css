@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+}
+
+.icon {
+    color: #fc5f0a;
+    size: 2rem;
+}
