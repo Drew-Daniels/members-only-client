@@ -24,7 +24,7 @@ function App() {
     checkAuth();
 
     function checkAuth() {
-      fetch('/api/auth')
+      fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/auth')
         .then(res => res.json())
         .then(res => {
           if (res.user) {
@@ -39,7 +39,7 @@ function App() {
 
     function loadMessages() {
       // get data from backend api
-      fetch('/api/messages')
+      fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages')
         .then(res => res.json())
         .then(res => {
           setMessages(res.messages)
@@ -49,7 +49,7 @@ function App() {
   }, [user]);
 
   function refetchMessages() {
-    fetch('/api/messages')
+    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages')
       .then(res => res.json())
       .then(res => {
         setMessages(res.messages)

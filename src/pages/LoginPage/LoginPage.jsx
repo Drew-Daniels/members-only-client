@@ -12,9 +12,10 @@ export default function LoginPage() {
     e.preventDefault();
     // do backend stuff
     const data = Object.fromEntries(new FormData(e.target));
-    fetch('/api/login', {
+    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/login', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
+      credentials: 'include',
       body: JSON.stringify(data)
     })
       .then(res => {

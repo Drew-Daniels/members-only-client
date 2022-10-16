@@ -10,8 +10,9 @@ export default function LogoutForm() {
 
   function handleLogout(e) {
     e.preventDefault();
-    fetch('/api/logout', {
+    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/logout', {
       method: 'DELETE',
+      credentials: 'include',
     })
       .then(afterLogout);
   }

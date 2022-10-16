@@ -12,9 +12,10 @@ export default function MembershipPage({ title, errors }) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     // fetch secret code from backend
-    fetch('/api/membership', {
+    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/membership', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
+      credentials: 'include',
       body: JSON.stringify(data),
     })
       .then(res => {

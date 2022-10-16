@@ -12,9 +12,10 @@ export default function SignupPage() {
     e.preventDefault();
     // do backend stuff
     const data = Object.fromEntries(new FormData(e.target));
-    fetch('/api/signup', {
+    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify(data)
     })
       .then(res => {
