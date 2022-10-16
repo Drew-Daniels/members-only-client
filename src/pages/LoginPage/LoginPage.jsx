@@ -1,7 +1,8 @@
-import LoginForm from "../../components/Forms/LoginForm";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useUser} from "../../contexts/user";
+
+import LoginForm from "../../components/Forms/LoginForm";
 
 export default function LoginPage() {
   const [errors, setErrors] = useState([]);
@@ -12,11 +13,9 @@ export default function LoginPage() {
     e.preventDefault();
     // do backend stuff
     const data = Object.fromEntries(new FormData(e.target));
-    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/login', {
+    fetch(`${process.env.REACT_APP_ORIGIN}/api/login`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
-      mode: 'cors',
-      credentials: 'include',
       body: JSON.stringify(data)
     })
       .then(res => {

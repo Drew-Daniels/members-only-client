@@ -11,11 +11,9 @@ export default function HomePage({ messages, refetchMessages }) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     data.author = user._id;
-    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages', {
+    fetch(`${process.env.REACT_APP_ORIGIN}/api/messages`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
-      mode: 'cors',
-      credentials: 'include',
       body: JSON.stringify(data),
     })
       .then(res => {

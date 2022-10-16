@@ -12,11 +12,9 @@ export default function SignupPage() {
     e.preventDefault();
     // do backend stuff
     const data = Object.fromEntries(new FormData(e.target));
-    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/signup', {
+    fetch(`${process.env.REACT_APP_ORIGIN}/api/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      mode: 'cors',
       body: JSON.stringify(data)
     })
       .then(res => {

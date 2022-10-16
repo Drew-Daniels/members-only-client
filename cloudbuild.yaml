@@ -1,0 +1,12 @@
+steps:
+  - name: node:16.18.0
+    entrypoint: npm
+    args: ["install"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["run", "deploy", "members-only-frontend",
+           "--image", "gcr.io/members-only-frontend/members-only-frontend",
+           "--platform", "managed",
+           "--region", "us-central1",
+           "--allow-unauthenticated"
+    ]
+timeout: "1600s"

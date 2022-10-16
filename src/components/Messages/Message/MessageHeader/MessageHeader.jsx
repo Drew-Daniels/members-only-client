@@ -8,10 +8,8 @@ export default function MessageHeader({ id, username, title, timestamp, refetchM
   const { user } = useUser();
 
   function handleDeleteMessage() {
-    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages/' + id, {
+    fetch(`${process.env.REACT_APP_ORIGIN}/api/messages/` + id, {
       method: 'DELETE',
-      mode: 'cors',
-      credentials: 'include',
     }).then(refetchMessages)
   }
 

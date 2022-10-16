@@ -10,10 +10,8 @@ export default function LogoutForm() {
 
   function handleLogout(e) {
     e.preventDefault();
-    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/logout', {
+    fetch(`${process.env.REACT_APP_ORIGIN}/api/logout`, {
       method: 'DELETE',
-      mode: 'cors',
-      credentials: 'include',
     })
       .then(afterLogout);
   }

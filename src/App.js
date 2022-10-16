@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {Routes, Route} from 'react-router-dom';
-import './index.css';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignupPage';
@@ -9,6 +8,7 @@ import LogoutPage from "./pages/Logout";
 import MembershipPage from "./pages/MembershipPage/MembershipPage";
 import MetadataContext from './contexts/metadata';
 import {useUser} from "./contexts/user";
+import './index.css';
 
 const Metadata = {
   title: 'Members Only',
@@ -24,8 +24,7 @@ function App() {
     checkAuth();
 
     function checkAuth() {
-      fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/auth', {
-        credentials: 'include',
+      fetch(`${process.env.REACT_APP_ORIGIN}/api/auth`, {
       })
         .then(res => res.json())
         .then(res => {
@@ -41,8 +40,7 @@ function App() {
 
     function loadMessages() {
       // get data from backend api
-      fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages', {
-        credentials: 'include',
+      fetch(`${process.env.REACT_APP_ORIGIN}/api/messages`, {
       })
         .then(res => res.json())
         .then(res => {
@@ -53,8 +51,7 @@ function App() {
   }, [user]);
 
   function refetchMessages() {
-    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages', {
-      credentials: 'include',
+    fetch(`${process.env.REACT_APP_ORIGIN}/api/messages`, {
     })
       .then(res => res.json())
       .then(res => {
