@@ -10,7 +10,7 @@ export default function LogoutForm() {
 
   function handleLogout(e) {
     e.preventDefault();
-    fetch(`${process.env.REACT_APP_ORIGIN}/api/logout`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/logout`, {
       method: 'DELETE',
     })
       .then(afterLogout);

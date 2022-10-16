@@ -11,7 +11,7 @@ export default function HomePage({ messages, refetchMessages }) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     data.author = user._id;
-    fetch(`${process.env.REACT_APP_ORIGIN}/api/messages`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

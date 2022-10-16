@@ -24,7 +24,7 @@ function App() {
     checkAuth();
 
     function checkAuth() {
-      fetch(`${process.env.REACT_APP_ORIGIN}/api/auth`, {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/auth`, {
       })
         .then(res => res.json())
         .then(res => {
@@ -40,7 +40,7 @@ function App() {
 
     function loadMessages() {
       // get data from backend api
-      fetch(`${process.env.REACT_APP_ORIGIN}/api/messages`, {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
       })
         .then(res => res.json())
         .then(res => {
@@ -51,7 +51,7 @@ function App() {
   }, [user]);
 
   function refetchMessages() {
-    fetch(`${process.env.REACT_APP_ORIGIN}/api/messages`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
     })
       .then(res => res.json())
       .then(res => {

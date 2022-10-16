@@ -12,7 +12,7 @@ export default function SignupPage() {
     e.preventDefault();
     // do backend stuff
     const data = Object.fromEntries(new FormData(e.target));
-    fetch(`${process.env.REACT_APP_ORIGIN}/api/signup`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

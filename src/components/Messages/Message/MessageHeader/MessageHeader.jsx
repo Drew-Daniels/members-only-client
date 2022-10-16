@@ -8,7 +8,7 @@ export default function MessageHeader({ id, username, title, timestamp, refetchM
   const { user } = useUser();
 
   function handleDeleteMessage() {
-    fetch(`${process.env.REACT_APP_ORIGIN}/api/messages/` + id, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages/` + id, {
       method: 'DELETE',
     }).then(refetchMessages)
   }
