@@ -15,6 +15,7 @@ export default function LoginPage() {
     fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/login', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
+      credentials: 'include',
       body: JSON.stringify(data)
     })
       .then(res => {

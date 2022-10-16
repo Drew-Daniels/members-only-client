@@ -24,7 +24,9 @@ function App() {
     checkAuth();
 
     function checkAuth() {
-      fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/auth')
+      fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/auth', {
+        credentials: 'include',
+      })
         .then(res => res.json())
         .then(res => {
           if (res.user) {
@@ -39,7 +41,9 @@ function App() {
 
     function loadMessages() {
       // get data from backend api
-      fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages')
+      fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages', {
+        credentials: 'include',
+      })
         .then(res => res.json())
         .then(res => {
           setMessages(res.messages)
@@ -49,7 +53,9 @@ function App() {
   }, [user]);
 
   function refetchMessages() {
-    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages')
+    fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages', {
+      credentials: 'include',
+    })
       .then(res => res.json())
       .then(res => {
         setMessages(res.messages)
