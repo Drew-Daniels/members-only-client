@@ -14,7 +14,6 @@ export default function HomePage({ messages, refetchMessages }) {
     fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
-      credentials: 'include',
       body: JSON.stringify(data),
     })
       .then(res => {
