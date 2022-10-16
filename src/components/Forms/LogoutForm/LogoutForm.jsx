@@ -12,6 +12,7 @@ export default function LogoutForm() {
     e.preventDefault();
     fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/logout', {
       method: 'DELETE',
+      mode: 'cors',
       credentials: 'include',
     })
       .then(afterLogout);

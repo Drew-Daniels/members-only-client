@@ -16,6 +16,7 @@ export default function SignupPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
+      mode: 'cors',
       body: JSON.stringify(data)
     })
       .then(res => {

@@ -10,6 +10,7 @@ export default function MessageHeader({ id, username, title, timestamp, refetchM
   function handleDeleteMessage() {
     fetch('https://members-only-api-qo64sidtta-uc.a.run.app/api/messages/' + id, {
       method: 'DELETE',
+      mode: 'cors',
       credentials: 'include',
     }).then(refetchMessages)
   }
