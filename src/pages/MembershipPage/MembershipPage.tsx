@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../contexts/user";
+import { useUser } from "../../contexts/user.tsx";
 import MembershipForm from "../../components/Forms/MembershipForm";
 
 export default function MembershipPage({ title, errors }) {

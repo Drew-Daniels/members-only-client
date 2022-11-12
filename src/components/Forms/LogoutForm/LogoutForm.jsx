@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import SubmitButton from "../../Buttons/SubmitButton";
-import {useUser} from "../../../contexts/user";
+import {useUser} from "../../../contexts/user.tsx";
 import FormHeader from "../FormHeader";
 
 export default function LogoutForm() {

@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupForm from "../../components/Forms/SignupForm";
-import { useUser } from "../../contexts/user";
+import { useUser } from "../../contexts/user.tsx";
+
+interface FormError {
+  param: string;
+  msg: string;
+}
 
 export default function SignupPage() {
   const { setUser } = useUser();
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState<FormError[]>([]);
   const navigate = useNavigate();
 
-  async function onSubmit(e) {
+  async function onSubmit(e: Event) {
     e.preventDefault();
     // do backend stuff
-    const data = Object.fromEntries(new FormData(e.target));
+    const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
     fetch(`${process.env.REACT_APP_API_BASE_URL}/api/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

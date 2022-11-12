@@ -1,6 +1,21 @@
 import Message from "./Message";
 
-export default function Messages({ messages, refetchMessages }) {
+interface Message {
+  _id: string;
+  author: {
+    username: string;
+  }
+  title: string;
+  body: string;
+  updatedAt: Date;
+}
+
+interface IProps {
+  messages: Message[];
+  refetchMessages: Function;
+}
+
+export default function Messages({ messages, refetchMessages }: IProps) {
   return (
     <ul className='flex-col justify-center'>
       {messages.map(({_id, author, title, body, updatedAt}) =>

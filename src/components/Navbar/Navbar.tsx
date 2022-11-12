@@ -4,7 +4,7 @@ import Logo from '../Logo';
 import Options from "../Options";
 import ProfilePill from "../ProfilePill";
 import Title from "../Title";
-import { useUser } from "../../contexts/user";
+import { useUser } from "../../contexts/user.tsx";
 
 export default function Navbar() {
   const { title } = useContext(MetadataContext);

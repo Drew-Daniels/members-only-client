@@ -1,15 +1,24 @@
 import { useState } from 'react';
 import MessageForm from "../../components/Forms/MessageForm";
 import Messages from "../../components/Messages";
-import {useUser} from "../../contexts/user";
+import {useUser} from "../../contexts/user.tsx";
 
-export default function HomePage({ messages, refetchMessages }) {
+interface Message {
+  // TODO: Move and add props
+}
+
+interface IProps {
+  messages: Message[];
+  refetchMessages: Function;
+}
+
+export default function HomePage({ messages, refetchMessages }: IProps) {
   const { user } = useUser();
   const [errors, setErrors] = useState([]);
 
-  function onSubmit(e) {
+  function onSubmit(e: Event) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
+    const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
     data.author = user._id;
     fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
       method: 'POST',

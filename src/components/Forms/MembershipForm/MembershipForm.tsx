@@ -1,8 +1,14 @@
 import { Formik, Form } from "formik";
 import TextInput from "../TextInput";
 import SubmitButton from "../../Buttons/SubmitButton";
+import {PropsWithChildren} from "react";
 
-export default function MembershipForm({ onSubmit, error }) {
+interface IProps extends PropsWithChildren {
+  onSubmit: Function;
+  error: string;
+}
+
+export default function MembershipForm({ onSubmit, error }: IProps) {
   return (
     <>
       <h1>Become an Admin</h1>

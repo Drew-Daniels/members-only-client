@@ -1,12 +1,17 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect, PropsWithChildren} from "react";
 import { Formik, Form } from "formik";
 import TextInput from "../TextInput";
 import SubmitButton from "../../Buttons/SubmitButton";
 import FormHeader from "../FormHeader";
 
-export default function LoginForm({ onSubmit, errors }) {
+interface IProps extends PropsWithChildren {
+  onSubmit: Function;
+  errors: string;
+}
+// TODO: is 'errors' ever an array? Not sure we want to either get a string or array here or if that is possible
+export default function LoginForm({ onSubmit, errors }: IProps) {
 
-  const [loginError, setLoginError] = useState('');
+  const [loginError, setLoginError] = useState<string>('');
 
   useEffect(() => {
     resetErrors();

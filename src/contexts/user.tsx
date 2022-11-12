@@ -1,4 +1,4 @@
-import {useState, createContext, useContext} from "react";
+import {useState, createContext, useContext, ReactNode, PropsWithChildren} from "react";
 
 const UserContext = createContext();
 
@@ -7,7 +7,7 @@ const DEFAULT_USER = {
   avatarUrl: 'https://members-only-media.s3.amazonaws.com/images/avatars/avatar-8.svg',
 }
 
-function UserProvider({children}) {
+function UserProvider({ children }: PropsWithChildren) {
   const [user, setUser] = useState(DEFAULT_USER);
   function resetUser() {
     setUser(DEFAULT_USER);

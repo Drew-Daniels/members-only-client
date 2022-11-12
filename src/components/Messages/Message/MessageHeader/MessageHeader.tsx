@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-import { useUser } from '../../../../contexts/user';
+import { useUser } from '../../../../contexts/user.tsx';
 
 export default function MessageHeader({ id, username, title, timestamp, refetchMessages }) {
   const { user } = useUser();
