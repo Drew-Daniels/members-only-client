@@ -1,9 +1,7 @@
-import {useContext} from "react";
-
-import MetadataContext from "../../contexts/metadata";
+import {useMetadata} from "../../contexts/metadata";
 
 export default function Footer() {
-  const { author, githubUrl } = useContext(MetadataContext)
+  const { author, githubUrl } = useMetadata()!;
   return (
     <div className="absolute bottom-0 flex">
       <footer className="mb-2 rounded-md shadow bg-gray-800">

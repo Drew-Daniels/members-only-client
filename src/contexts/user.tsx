@@ -1,14 +1,25 @@
-import {useState, createContext, useContext, ReactNode, PropsWithChildren} from "react";
+import {useState, createContext, useContext, PropsWithChildren, SetStateAction, Dispatch} from "react";
 
-const UserContext = createContext();
+interface IUser {
+  username: string;
+  avatarUrl: string;
+}
 
-const DEFAULT_USER = {
+interface IUserContext {
+  user: IUser;
+  setUser: Dispatch<SetStateAction<IUser>>;
+  resetUser: Dispatch<SetStateAction<IUser>>;
+}
+
+const UserContext = createContext<IUserContext | null>(null);
+
+const DEFAULT_USER: IUser = {
   username: 'Guest',
   avatarUrl: 'https://members-only-media.s3.amazonaws.com/images/avatars/avatar-8.svg',
 }
 
 function UserProvider({ children }: PropsWithChildren) {
-  const [user, setUser] = useState(DEFAULT_USER);
+  const [user, setUser] = useState<IUser>(DEFAULT_USER)!;
   function resetUser() {
     setUser(DEFAULT_USER);
   }

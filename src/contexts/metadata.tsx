@@ -1,5 +1,14 @@
-import React from "react";
+import {createContext, useContext} from "react";
 
-const MetadataContext = React.createContext(null);
+interface IMetadataContext {
+  author: string;
+  githubUrl: string;
+}
+
+const MetadataContext = createContext<IMetadataContext | null>(null);
+
+export function useMetadata() {
+  return useContext(MetadataContext);
+}
 
 export default MetadataContext;
