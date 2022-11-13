@@ -4,12 +4,12 @@ import TextInput from "../TextInput";
 import SubmitButton from "../../Buttons/SubmitButton";
 import FormHeader from "../FormHeader";
 
-interface IProps extends PropsWithChildren {
+interface Props extends PropsWithChildren {
   onSubmit: Function;
   errors: string[];
 }
-// TODO: is 'errors' ever an array? Not sure we want to either get a string or array here or if that is possible
-export default function LoginForm({ onSubmit, errors }: IProps) {
+
+export default function LoginForm({ onSubmit, errors }: Props) {
 
   const [loginError, setLoginError] = useState<string[]>(['']);
 

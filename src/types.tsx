@@ -1,15 +1,15 @@
-interface IFormError {
+interface FormError {
   param: string;
   msg: string;
 }
 
-interface IUser {
+interface User {
   username: string;
   avatarUrl: string;
   isAdmin: boolean;
 }
 
-interface IMessage {
+interface Message {
   // reconcile id fields
   _id: string;
   id: string;
@@ -22,4 +22,4 @@ interface IMessage {
   refetchMessages: Function;
 }
 
-export type { IFormError, IMessage, IUser };
+export type { FormError, Message, User };

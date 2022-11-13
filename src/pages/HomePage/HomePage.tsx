@@ -2,14 +2,14 @@ import { useState } from 'react';
 import MessageForm from "../../components/Forms/MessageForm";
 import Messages from "../../components/Messages";
 import {useUser} from "../../contexts/user";
-import type { IMessage } from "../../types";
+import type { Message } from "../../types";
 
-interface IProps {
-  messages: IMessage[];
+interface Props {
+  messages: Message[];
   refetchMessages: Function;
 }
 
-export default function HomePage({ messages, refetchMessages }: IProps) {
+export default function HomePage({ messages, refetchMessages }: Props) {
   const { user } = useUser();
   const [errors, setErrors] = useState<string[]>([]);
 

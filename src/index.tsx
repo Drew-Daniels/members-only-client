@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import App from './App';
 import {UserProvider} from "./contexts/user";
-import type { IUser } from "./types";
+import type { User } from "./types";
 
-const DEFAULT_USER: IUser = {
+const DEFAULT_USER: User = {
   username: 'Guest',
   avatarUrl: 'https://members-only-media.s3.amazonaws.com/images/avatars/avatar-8.svg',
   isAdmin: false,

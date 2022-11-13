@@ -10,12 +10,12 @@ interface Message {
   updatedAt: Date;
 }
 
-interface IProps {
+interface Props {
   messages: Message[];
   refetchMessages: Function;
 }
 
-export default function Messages({ messages, refetchMessages }: IProps) {
+export default function Messages({ messages, refetchMessages }: Props) {
   return (
     <ul className='flex-col justify-center'>
       {messages.map(({_id, author, title, body, updatedAt}) =>

@@ -3,12 +3,12 @@ import TextInput from "../TextInput";
 import SubmitButton from "../../Buttons/SubmitButton";
 import {PropsWithChildren} from "react";
 
-interface IProps extends PropsWithChildren {
+interface Props extends PropsWithChildren {
   onSubmit: Function;
   error: string;
 }
 
-export default function MembershipForm({ onSubmit, error }: IProps) {
+export default function MembershipForm({ onSubmit, error }: Props) {
   return (
     <>
       <h1>Become an Admin</h1>

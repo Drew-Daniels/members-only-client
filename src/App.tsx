@@ -8,7 +8,7 @@ import LogoutPage from "./pages/Logout";
 import MembershipPage from "./pages/MembershipPage/MembershipPage";
 import {MetadataProvider} from './contexts/metadata';
 import {useUser} from "./contexts/user";
-import type { IMessage } from "./types";
+import type { Message } from "./types";
 import './index.css';
 
 const Metadata = {
@@ -19,7 +19,7 @@ const Metadata = {
 
 function App() {
   const { user, setUser } = useUser();
-  const [messages, setMessages] = useState<IMessage[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     checkAuth();

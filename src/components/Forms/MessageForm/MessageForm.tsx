@@ -5,10 +5,14 @@ import TextInput from "../TextInput";
 import TextArea from "../TextArea";
 import SubmitButton from "../../Buttons/SubmitButton";
 import FormHeader from "../FormHeader";
+import type { FormError } from "../../../types";
 
-import type { IFormError } from "../../../types";
+interface Props {
+  onSubmit(): void;
+  errors: FormError[];
+}
 
-export default function MessageForm({ onSubmit, errors }) {
+export default function MessageForm({ onSubmit, errors }: Props) {
   const [titleError, setTitleError] = useState('');
   const [bodyError, setBodyError] = useState('');
 
@@ -25,7 +29,7 @@ export default function MessageForm({ onSubmit, errors }) {
       setBodyError('');
     }
     function mapErrors() {
-      errors.forEach((err: IFormError) => {
+      errors.forEach((err: FormError) => {
         const { param, msg } = err;
         switch (param) {
           case 'title':

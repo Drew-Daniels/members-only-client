@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/user";
 import MembershipForm from "../../components/Forms/MembershipForm";
-interface IProps {
+interface Props {
   title: string;
 }
 
-export default function MembershipPage({ title }: IProps) {
+export default function MembershipPage({ title }: Props) {
   const { setUser } = useUser();
   const navigate = useNavigate();
   const [error, setError] = useState('');
