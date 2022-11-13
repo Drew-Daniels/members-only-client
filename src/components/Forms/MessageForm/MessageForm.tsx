@@ -8,7 +8,7 @@ import FormHeader from "../FormHeader";
 import type { FormError } from "../../../types";
 
 interface Props {
-  onSubmit(): void;
+  onSubmit: (E: Event) => void;
   errors: FormError[];
 }
 

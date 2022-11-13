@@ -2,7 +2,7 @@ import { SetStateAction, Dispatch } from "react";
 import ContextFactory from "./utils";
 import type {User} from "../types";
 
-interface UserContext {
+export interface UserContext {
   user: User;
   setUser: Dispatch<SetStateAction<User>>;
   resetUser: Function;

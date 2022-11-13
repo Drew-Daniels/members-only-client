@@ -1,8 +1,15 @@
 import { useField } from "formik";
 
-export default function TextArea({label, ...props}) {
+interface Props {
+  id: string;
+  label: string;
+  name: string;
+  error: string;
+}
 
-    const [field, meta] = useField(props);
+export default function TextArea({label, ...props}: Props) {
+
+    const [field, _] = useField(props);
     const { id, name, error } = props;
 
     return (

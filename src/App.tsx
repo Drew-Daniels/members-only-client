@@ -7,9 +7,17 @@ import LoginPage from './pages/LoginPage';
 import LogoutPage from "./pages/Logout";
 import MembershipPage from "./pages/MembershipPage/MembershipPage";
 import {MetadataProvider} from './contexts/metadata';
-import {useUser} from "./contexts/user";
+import {useUser, UserProvider} from "./contexts/user";
 import type { Message } from "./types";
 import './index.css';
+import {User} from "./types";
+
+const DEFAULT_USER: User = {
+  _id: '',
+  username: 'Guest',
+  avatarUrl: 'https://members-only-media.s3.amazonaws.com/images/avatars/avatar-8.svg',
+  isAdmin: false,
+}
 
 const Metadata = {
   title: 'Members Only',
@@ -18,8 +26,14 @@ const Metadata = {
 };
 
 function App() {
-  const { user, setUser } = useUser();
+  const { user, setUser, resetUser } = useUser();
   const [messages, setMessages] = useState<Message[]>([]);
+
+  const INITIAL_USER_CONTEXT = {
+    user: DEFAULT_USER,
+    setUser,
+    resetUser,
+  }
 
   useEffect(() => {
     checkAuth();
@@ -62,17 +76,19 @@ function App() {
 
   return (
     <div className='App'>
-      <MetadataProvider value={Metadata}>
-        <Layout>
-          <Routes>
-            <Route path='/' element={<HomePage messages={messages} refetchMessages={refetchMessages}/>} />
-            <Route path='/signup' element={<SignupPage />}/>
-            <Route path='/login' element={<LoginPage />}/>
-            <Route path='/membership' element={<MembershipPage title='Join' />} />
-            <Route path='/logout' element={<LogoutPage />} />
-          </Routes>
-        </Layout>
-      </MetadataProvider>
+      <UserProvider value={INITIAL_USER_CONTEXT}>
+        <MetadataProvider value={Metadata}>
+          <Layout>
+            <Routes>
+              <Route path='/' element={<HomePage messages={messages} refetchMessages={refetchMessages}/>} />
+              <Route path='/signup' element={<SignupPage />}/>
+              <Route path='/login' element={<LoginPage />}/>
+              <Route path='/membership' element={<MembershipPage title='Join' />} />
+              <Route path='/logout' element={<LogoutPage />} />
+            </Routes>
+          </Layout>
+        </MetadataProvider>
+      </UserProvider>
     </div>
   );
 }

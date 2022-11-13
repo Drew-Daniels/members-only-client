@@ -13,7 +13,7 @@ export default function HomePage({ messages, refetchMessages }: Props) {
   const { user } = useUser();
   const [errors, setErrors] = useState<FormError[]>([]);
 
-  function onSubmit(e: Event) {
+  function onSubmit(e: Event): void {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
     data.author = user._id;
