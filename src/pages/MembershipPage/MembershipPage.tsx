@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/user";
-import {MembershipForm} from "../../components/Forms/MembershipForm/MembershipForm";
+import {MembershipForm} from "../../components/Forms/MembershipForm";
 
 interface Props {
   title: string;
