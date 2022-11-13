@@ -1,1 +1,1 @@
-export { AuthWrapper } from './AuthWrapper.js';
+export { default } from './AuthWrapper';

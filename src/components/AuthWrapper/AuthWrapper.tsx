@@ -1,7 +1,7 @@
 import {useEffect, PropsWithChildren} from "react";
 import {useUser} from "../../contexts/user";
 
-export function AuthWrapper({ children }: PropsWithChildren) {
+export default function AuthWrapper({ children }: PropsWithChildren) {
   const { setUser } = useUser();
 
   useEffect(() => {
