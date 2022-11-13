@@ -19,7 +19,7 @@ const InnerForm = (props: FormikProps<FormikValues>) => {
 };
 
 export const LogoutForm = withFormik<FormProps, {}>({
-  handleSubmit: (_, { props: { navigate, resetUser } }) => {
+  handleSubmit: async (_, { props: { navigate, resetUser } }) => {
     fetch(`${process.env.REACT_APP_API_BASE_URL}/api/logout`, {
       method: 'DELETE',
     })
