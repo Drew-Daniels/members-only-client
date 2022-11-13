@@ -6,8 +6,9 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import LogoutPage from "./pages/Logout";
 import MembershipPage from "./pages/MembershipPage/MembershipPage";
-import MetadataContext from './contexts/metadata';
-import {useUser} from "./contexts/user.tsx";
+import {MetadataProvider} from './contexts/metadata';
+import {useUser} from "./contexts/user";
+import type { IMessage } from "./types";
 import './index.css';
 
 const Metadata = {
@@ -18,7 +19,7 @@ const Metadata = {
 
 function App() {
   const { user, setUser } = useUser();
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<IMessage[]>([]);
 
   useEffect(() => {
     checkAuth();
@@ -61,17 +62,17 @@ function App() {
 
   return (
     <div className='App'>
-      <MetadataContext.Provider value={Metadata}>
+      <MetadataProvider value={Metadata}>
         <Layout>
           <Routes>
             <Route path='/' element={<HomePage messages={messages} refetchMessages={refetchMessages}/>} />
             <Route path='/signup' element={<SignupPage />}/>
             <Route path='/login' element={<LoginPage />}/>
-            <Route path='/membership' element={<MembershipPage />} />
+            <Route path='/membership' element={<MembershipPage title='Join' />} />
             <Route path='/logout' element={<LogoutPage />} />
           </Routes>
         </Layout>
-      </MetadataContext.Provider>
+      </MetadataProvider>
     </div>
   );
 }

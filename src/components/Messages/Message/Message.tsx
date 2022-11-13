@@ -1,7 +1,9 @@
+import type { IMessage } from "../../../types";
 import MessageHeader from "./MessageHeader";
 import MessageBody from "./MessageBody";
 
-export default function Message({ id, username, title, body, timestamp, refetchMessages }) {
+
+export default function Message({ id, username, title, body, timestamp, refetchMessages }: IMessage) {
   return (
       <div className='flex flex-col text-white mb-5 border border-1 border-gray-500 rounded-md'>
         <MessageHeader

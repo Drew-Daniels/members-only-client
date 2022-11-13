@@ -6,6 +6,8 @@ import TextArea from "../TextArea";
 import SubmitButton from "../../Buttons/SubmitButton";
 import FormHeader from "../FormHeader";
 
+import type { IFormError } from "../../../types";
+
 export default function MessageForm({ onSubmit, errors }) {
   const [titleError, setTitleError] = useState('');
   const [bodyError, setBodyError] = useState('');
@@ -23,7 +25,7 @@ export default function MessageForm({ onSubmit, errors }) {
       setBodyError('');
     }
     function mapErrors() {
-      errors.forEach(err => {
+      errors.forEach((err: IFormError) => {
         const { param, msg } = err;
         switch (param) {
           case 'title':

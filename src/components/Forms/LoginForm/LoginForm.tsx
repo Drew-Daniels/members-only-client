@@ -6,12 +6,12 @@ import FormHeader from "../FormHeader";
 
 interface IProps extends PropsWithChildren {
   onSubmit: Function;
-  errors: string;
+  errors: string[];
 }
 // TODO: is 'errors' ever an array? Not sure we want to either get a string or array here or if that is possible
 export default function LoginForm({ onSubmit, errors }: IProps) {
 
-  const [loginError, setLoginError] = useState<string>('');
+  const [loginError, setLoginError] = useState<string[]>(['']);
 
   useEffect(() => {
     resetErrors();
@@ -19,7 +19,7 @@ export default function LoginForm({ onSubmit, errors }: IProps) {
       setLoginError(errors);
     }
     function resetErrors() {
-      setLoginError('');
+      setLoginError(['']);
     }
   }, [errors]);
 

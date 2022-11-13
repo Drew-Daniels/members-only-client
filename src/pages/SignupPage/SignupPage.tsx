@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupForm from "../../components/Forms/SignupForm";
-import { useUser } from "../../contexts/user.tsx";
-
-interface FormError {
-  param: string;
-  msg: string;
-}
+import { useUser } from "../../contexts/user";
+import { IFormError } from "../../types";
 
 export default function SignupPage() {
   const { setUser } = useUser();
-  const [errors, setErrors] = useState<FormError[]>([]);
+  const [errors, setErrors] = useState<IFormError[]>([]);
   const navigate = useNavigate();
 
   async function onSubmit(e: Event) {

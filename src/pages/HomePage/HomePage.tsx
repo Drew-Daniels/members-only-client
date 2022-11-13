@@ -1,20 +1,17 @@
 import { useState } from 'react';
 import MessageForm from "../../components/Forms/MessageForm";
 import Messages from "../../components/Messages";
-import {useUser} from "../../contexts/user.tsx";
-
-interface Message {
-  // TODO: Move and add props
-}
+import {useUser} from "../../contexts/user";
+import type { IMessage } from "../../types";
 
 interface IProps {
-  messages: Message[];
+  messages: IMessage[];
   refetchMessages: Function;
 }
 
 export default function HomePage({ messages, refetchMessages }: IProps) {
   const { user } = useUser();
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState<string[]>([]);
 
   function onSubmit(e: Event) {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import { useUser } from "../../contexts/user.tsx";
+import { useUser } from "../../contexts/user";
 import Option from "./Option";
 
 export default function Options() {

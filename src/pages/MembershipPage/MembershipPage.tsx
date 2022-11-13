@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../contexts/user.tsx";
+import { useUser } from "../../contexts/user";
 import MembershipForm from "../../components/Forms/MembershipForm";
+interface IProps {
+  title: string;
+}
 
-export default function MembershipPage({ title, errors }) {
+export default function MembershipPage({ title }: IProps) {
   const { setUser } = useUser();
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
-  function handleSubmit(e) {
+  function handleSubmit(e: Event) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
+    const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
     // fetch secret code from backend
     fetch(`${process.env.REACT_APP_API_BASE_URL}/api/membership`, {
       method: 'POST',
