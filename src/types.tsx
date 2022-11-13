@@ -4,6 +4,7 @@ interface FormError {
 }
 
 interface User {
+  _id: string;
   username: string;
   avatarUrl: string;
   isAdmin: boolean;
@@ -20,6 +21,7 @@ interface Message {
   body: string;
   timestamp: string;
   refetchMessages: Function;
+  updatedAt: string;
 }
 
 export type { FormError, Message, User };

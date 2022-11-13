@@ -1,10 +1,17 @@
 import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
 import { useUser } from '../../../../contexts/user';
 
-export default function MessageHeader({ id, username, title, timestamp, refetchMessages }) {
+interface Props {
+  id: string;
+  username: string;
+  title: string;
+  timestamp: string;
+  refetchMessages: () => void;
+}
+
+export default function MessageHeader({ id, username, title, timestamp, refetchMessages }: Props) {
   const { user } = useUser();
 
   function handleDeleteMessage() {

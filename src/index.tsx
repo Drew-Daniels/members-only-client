@@ -6,6 +6,7 @@ import {UserProvider} from "./contexts/user";
 import type { User } from "./types";
 
 const DEFAULT_USER: User = {
+  _id: '',
   username: 'Guest',
   avatarUrl: 'https://members-only-media.s3.amazonaws.com/images/avatars/avatar-8.svg',
   isAdmin: false,

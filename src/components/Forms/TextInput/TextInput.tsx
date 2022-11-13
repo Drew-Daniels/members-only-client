@@ -1,10 +1,19 @@
 import { useField} from "formik";
 
-export default function TextInput({ label, ...props }) {
+interface Props {
+  label: string;
+  name: string;
+  type: string;
+  placeholder: string;
+  id?: string;
+  classes?: string;
+  error?: string;
+}
 
-  const [field, meta] = useField(props);
+export default function TextInput({ label, ...props}: Props) {
+
+  const [field, _] = useField(props);
   const { id, name, error } = props;
-
   return (
     <div className='bg-gray-800 py-2 justify-self-stretch'>
       <label htmlFor={ id || name } className='px-2 text-white text-lg'>{label}</label>

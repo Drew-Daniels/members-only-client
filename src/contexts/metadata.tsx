@@ -1,8 +1,9 @@
 import ContextFactory from "./utils";
 
-interface IMetadataContext {
+interface MetadataContext {
+  title: string;
   author: string;
   githubUrl: string;
 }
 
-export const [useMetadata, MetadataProvider] = ContextFactory<IMetadataContext>();
+export const [useMetadata, MetadataProvider] = ContextFactory<MetadataContext>();

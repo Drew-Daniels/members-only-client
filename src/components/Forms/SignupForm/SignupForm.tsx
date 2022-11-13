@@ -3,8 +3,14 @@ import { Formik, Form } from "formik";
 import TextInput from "../TextInput";
 import SubmitButton from '../../Buttons/SubmitButton';
 import FormHeader from "../FormHeader";
+import {FormError} from "../../../types";
 
-export default function SignupForm({ onSubmit, errors }) {
+interface Props {
+  onSubmit: () => void;
+  errors: FormError[];
+}
+
+export default function SignupForm({ onSubmit, errors }: Props) {
 
   const [firstNameError, setFirstNameError] = useState('');
   const [lastNameError, setLastNameError] = useState('');

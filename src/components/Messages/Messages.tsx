@@ -1,18 +1,9 @@
-import Message from "./Message";
-
-interface Message {
-  _id: string;
-  author: {
-    username: string;
-  }
-  title: string;
-  body: string;
-  updatedAt: Date;
-}
+import MessageComponent from "./Message";
+import type { Message } from "../../types";
 
 interface Props {
   messages: Message[];
-  refetchMessages: Function;
+  refetchMessages(): void;
 }
 
 export default function Messages({ messages, refetchMessages }: Props) {
@@ -20,9 +11,9 @@ export default function Messages({ messages, refetchMessages }: Props) {
     <ul className='flex-col justify-center'>
       {messages.map(({_id, author, title, body, updatedAt}) =>
         <li key={_id} className='flex-col justify-center'>
-          <Message
+          <MessageComponent
             id={_id}
-            username={author.username}
+            author={author}
             title={title}
             body={body}
             timestamp={updatedAt}

@@ -2,16 +2,16 @@ import { useState } from 'react';
 import MessageForm from "../../components/Forms/MessageForm";
 import Messages from "../../components/Messages";
 import {useUser} from "../../contexts/user";
-import type { Message } from "../../types";
+import type {FormError, Message} from "../../types";
 
 interface Props {
   messages: Message[];
-  refetchMessages: Function;
+  refetchMessages: () => void;
 }
 
 export default function HomePage({ messages, refetchMessages }: Props) {
   const { user } = useUser();
-  const [errors, setErrors] = useState<string[]>([]);
+  const [errors, setErrors] = useState<FormError[]>([]);
 
   function onSubmit(e: Event) {
     e.preventDefault();
