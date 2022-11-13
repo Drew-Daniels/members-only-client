@@ -6,7 +6,7 @@ interface FormProps {
   resetUser: Function;
 }
 
-const InnerForm = (props: FormikProps<FormikValues>) => {
+const InnerForm = (props: FormikProps<any>) => {
   const { isSubmitting } = props;
   return (
     <Form>

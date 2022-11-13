@@ -18,7 +18,7 @@ interface FormValues {
   body: string;
 }
 
-const InnerForm = (props: FormikProps<FormikValues>) =>  {
+const InnerForm = (props: FormikProps<FormValues>) =>  {
   const { touched, errors, isSubmitting } = props;
   return (
     <Form className='w-full bg-gray-800 px-4 py-2 mb-5 grid justify-items-center border border-1 border-gray-500 rounded-md'>

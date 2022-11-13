@@ -20,7 +20,7 @@ interface FormValues {
   password: string;
 }
 
-const InnerForm = (props: FormikProps<FormikValues>) => {
+const InnerForm = (props: FormikProps<FormValues>) => {
   const { touched, errors, isSubmitting } = props;
   return (
     <Form className='bg-gray-800 rounded-b-md pb-2 px-5 grid justify-items-center border border-1 border-gray-500 rounded-md'>
@@ -46,7 +46,7 @@ export const LoginForm = withFormik<FormProps, FormValues>({
     }
   },
 
-  validate: values => {
+  validate: (values) => {
     const errors: FormErrors = {};
     if (!values.username) {
       errors.username = 'Username required';
@@ -79,8 +79,6 @@ export const LoginForm = withFormik<FormProps, FormValues>({
           navigate('/');
         }
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => console.log(err));
   },
 })(InnerForm);

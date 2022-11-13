@@ -1,15 +1,11 @@
 import {MessageForm} from "../../components/Forms/MessageForm";
 import Messages from "../../components/Messages";
 import {useUser} from "../../contexts/user";
-import type {Message} from "../../types";
+import {useMessages} from "../../contexts/messages";
 
-interface Props {
-  messages: Message[];
-  refetchMessages: () => void;
-}
-
-export default function HomePage({ messages, refetchMessages }: Props) {
+export default function HomePage() {
   const { user } = useUser();
+  const { messages, refetchMessages } = useMessages();
   return (
     <div className='pt-5 flex-col flex-grow'>
       {user.username !== 'Guest' &&

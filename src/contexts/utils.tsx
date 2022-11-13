@@ -6,6 +6,8 @@ import {createContext, useContext} from "react";
  */
 function ContextFactory<A extends {} | null>() {
   const ctx = createContext<A | undefined>(undefined);
+  return [useCtx, ctx.Provider] as const; // infer tuple
+
   function useCtx() {
     const c = useContext(ctx);
     if (c === undefined) {
@@ -13,7 +15,6 @@ function ContextFactory<A extends {} | null>() {
     }
     return c;
   }
-  return [useCtx, ctx.Provider] as const; // infer tuple
 }
 
 export default ContextFactory;

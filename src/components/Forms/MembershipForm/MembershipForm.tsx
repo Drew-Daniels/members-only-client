@@ -1,4 +1,4 @@
-import {Form, withFormik, FormikProps, FormikValues, Field} from "formik";
+import {Form, withFormik, FormikProps, FormikValues, Field, FormikErrors} from "formik";
 import type { User } from "../../../types";
 import {Dispatch, SetStateAction} from "react";
 
@@ -16,12 +16,12 @@ interface FormValues {
   secretCode: string;
 }
 
-const InnerForm = (props: FormikProps<FormikValues>) => {
+const InnerForm = (props: FormikProps<FormValues>) => {
   const { touched, errors, isSubmitting } = props;
   return (
     <Form>
       <Field type='password' name='secret' placeholder='Enter Secret Code' />
-      {touched.lastName && errors.lastName && <div>{errors.lastName}</div>}
+      {touched.secretCode && errors.secretCode && <div>{errors.secretCode}</div>}
 
       <button type='submit' disabled={isSubmitting}>
         Submit
@@ -38,7 +38,7 @@ export const MembershipForm = withFormik<FormProps, FormValues>({
   },
 
   validate: values => {
-    const errors: FormErrors = {};
+    const errors: FormikErrors<FormValues> = {};
     if (!values.secretCode) {
       errors.secretCode = 'Secret Code is required';
     }
