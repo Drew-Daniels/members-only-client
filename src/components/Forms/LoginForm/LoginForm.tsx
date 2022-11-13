@@ -1,57 +1,86 @@
-import {useState, useEffect, PropsWithChildren} from "react";
-import { Formik, Form } from "formik";
-import TextInput from "../TextInput";
-import SubmitButton from "../../Buttons/SubmitButton";
+import {Form, withFormik, FormikProps, FormikValues, Field} from "formik";
 import FormHeader from "../FormHeader";
+import {Dispatch, SetStateAction} from "react";
+import {User} from "../../../types";
 
-interface Props extends PropsWithChildren {
-  onSubmit: Function;
-  errors: string[];
+interface FormErrors {
+  username?: string;
+  password?: string;
 }
 
-export default function LoginForm({ onSubmit, errors }: Props) {
+interface FormProps {
+  setUser: Dispatch<SetStateAction<User>>
+  navigate: Function;
+  initialUsername?: string;
+  initialPassword?: string;
+}
 
-  const [loginError, setLoginError] = useState<string[]>(['']);
+interface FormValues {
+  username: string;
+  password: string;
+}
 
-  useEffect(() => {
-    resetErrors();
-    if (errors) {
-      setLoginError(errors);
-    }
-    function resetErrors() {
-      setLoginError(['']);
-    }
-  }, [errors]);
-
+const InnerForm = (props: FormikProps<FormikValues>) => {
+  const { touched, errors, isSubmitting } = props;
   return (
-    <div>
-      <Formik
-        initialValues={{
-          username: '',
-          password: '',
-        }}
-        onSubmit={onSubmit}
-      >
-        <Form onSubmit={e => onSubmit(e)} className='bg-gray-800 rounded-b-md pb-2 px-5 grid justify-items-center border border-1 border-gray-500 rounded-md'>
-          <FormHeader text='Log In'/>
-          <TextInput
-            label='Username'
-            name='username'
-            type='username'
-            placeholder='Enter your username here'
-          />
-          <TextInput
-            label='Password'
-            name='password'
-            type='password'
-            placeholder='Enter your password here'
-          />
-          <div className='text-white'>
-            {loginError}
-          </div>
-          <SubmitButton />
-        </Form>
-      </Formik>
-    </div>
+    <Form className='bg-gray-800 rounded-b-md pb-2 px-5 grid justify-items-center border border-1 border-gray-500 rounded-md'>
+      <FormHeader text='Log In'/>
+      <Field type='text' name='firstName' placeholder='Enter your username (your email)' />
+      {touched.username && errors.username && <div>{errors.username}</div>}
+
+      <Field type='text' name='password' placeholder='Enter your password' />
+      {touched.password && errors.password && <div>{errors.password}</div>}
+
+      <button type='submit' disabled={isSubmitting}>
+        Submit
+      </button>
+    </Form>
   )
 }
+
+export const LoginForm = withFormik<FormProps, FormValues>({
+  mapPropsToValues: props => {
+    return {
+      username: props.initialUsername || '',
+      password: props.initialPassword || '',
+    }
+  },
+
+  validate: values => {
+    const errors: FormErrors = {};
+    if (!values.username) {
+      errors.username = 'Username required';
+    }
+    if (!values.password) {
+      errors.password = 'Password required';
+    }
+  },
+
+  handleSubmit: (values, { props: { setUser, navigate } }) => {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/login`, {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values)
+    })
+      .then(res => {
+        if (res.status === 400) {
+          console.log('Username and Password must both be provided')
+          return;
+        }
+        if (res.status === 401) {
+          console.log('Incorrect Username or Password')
+          return;
+        }
+        return res.json()
+      })
+      .then(res => {
+        if (res.user) {
+          setUser(res.user);
+          navigate('/');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+})(InnerForm);
