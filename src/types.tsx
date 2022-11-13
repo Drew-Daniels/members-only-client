@@ -1,8 +1,3 @@
-interface FormError {
-  param: string;
-  msg: string;
-}
-
 interface User {
   _id: string;
   username: string;
@@ -24,4 +19,4 @@ interface Message {
   updatedAt: string;
 }
 
-export type { FormError, Message, User };
+export type { Message, User };
