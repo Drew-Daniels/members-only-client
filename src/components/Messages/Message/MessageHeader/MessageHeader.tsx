@@ -20,7 +20,7 @@ export default function MessageHeader({ id, username, title, timestamp, refetchM
     }).then(refetchMessages)
   }
 
-  function getFormattedDateFromTimestamp(timeStampString) {
+  function getFormattedDateFromTimestamp(timeStampString: string) {
     return dayjs(timeStampString).format('MM/DD/YYYY h:mm A');
   }
 

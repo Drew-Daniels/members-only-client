@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import MessageForm from "../../components/Forms/MessageForm";
+import {MessageForm} from "../../components/Forms/MessageForm";
 import Messages from "../../components/Messages";
 import {useUser} from "../../contexts/user";
-import type {FormError, Message} from "../../types";
+import type {Message} from "../../types";
 
 interface Props {
   messages: Message[];
@@ -11,34 +10,10 @@ interface Props {
 
 export default function HomePage({ messages, refetchMessages }: Props) {
   const { user } = useUser();
-  const [errors, setErrors] = useState<FormError[]>([]);
-
-  function onSubmit(e: Event): void {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target as HTMLFormElement));
-    data.author = user._id;
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then(res => {
-        return res.json()
-      })
-      .then(res => {
-        if (res.errors) {
-          setErrors(res.errors);
-          return;
-        }
-        return refetchMessages();
-      })
-      .catch(err => console.error(err));
-  }
-
   return (
     <div className='pt-5 flex-col flex-grow'>
       {user.username !== 'Guest' &&
-        <MessageForm onSubmit={onSubmit} errors={errors} />
+        <MessageForm userId={user._id} refetchMessages={refetchMessages} />
       }
       <Messages messages={messages} refetchMessages={refetchMessages} />
     </div>
