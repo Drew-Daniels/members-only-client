@@ -1,36 +1,34 @@
-import { useNavigate } from "react-router-dom";
-import { Formik, Form } from "formik";
-import SubmitButton from "../../Buttons/SubmitButton";
-import {useUser} from "../../../contexts/user";
+import {Form, withFormik, FormikProps, FormikValues} from "formik";
 import FormHeader from "../FormHeader";
 
-export default function LogoutForm() {
-  const navigate = useNavigate();
-  const {resetUser} = useUser();
+interface FormProps {
+  navigate: Function;
+  resetUser: Function;
+}
 
-  function handleLogout(e: Event): void {
-    e.preventDefault();
+const InnerForm = (props: FormikProps<FormikValues>) => {
+  const { isSubmitting } = props;
+  return (
+    <Form>
+      <FormHeader text='Are You Sure You Want to Log Out?'/>
+      <button type='submit' disabled={isSubmitting}>
+        Submit
+      </button>
+    </Form>
+  )
+};
+
+export const LogoutForm = withFormik<FormProps, {}>({
+  handleSubmit: (_, { props: { navigate, resetUser } }) => {
     fetch(`${process.env.REACT_APP_API_BASE_URL}/api/logout`, {
       method: 'DELETE',
     })
-    .then(afterLogout);
-  }
-  function afterLogout() {
-    resetUser();
-    navigate('/');
+      .then(afterLogout);
+
+    function afterLogout() {
+      resetUser();
+      navigate('/');
+    }
   }
 
-  return (
-    <>
-      <Formik
-        initialValues={null}
-        onSubmit={handleLogout}
-      >
-        <Form onSubmit={ e => handleLogout(e)}>
-          <FormHeader text='Are You Sure You Want to Log Out?'/>
-          <SubmitButton />
-        </Form>
-      </Formik>
-    </>
-  )
-}
+})(InnerForm)
