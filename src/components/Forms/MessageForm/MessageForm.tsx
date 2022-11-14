@@ -23,13 +23,13 @@ const InnerForm = (props: FormikProps<FormValues>) =>  {
   return (
     <Form className='w-full bg-gray-800 px-4 py-2 mb-5 grid justify-items-center border border-1 border-gray-500 rounded-md'>
       <FormHeader text='New Message'/>
-      <Field type='text' name='title' placeholder='Enter your message title' />
+      <Field type='text' name='title' placeholder='Enter your message title' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' />
       {touched.title && errors.title && <div>{errors.title}</div>}
 
-      <Field type='text' name='body' placeholder='Enter your message body' />
+      <Field type='text' name='body' placeholder='Enter your message body' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' />
       {touched.body && errors.body && <div>{errors.body}</div>}
 
-      <button type='submit' disabled={isSubmitting}>
+      <button type='submit' disabled={isSubmitting} className='bg-[#fc5f0a] py-2 px-4 my-2 rounded inline-flex items-center text-white'>
         Submit
       </button>
     </Form>

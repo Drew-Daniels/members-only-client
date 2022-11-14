@@ -25,7 +25,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
   return (
     <Form className='bg-gray-800 rounded-b-md pb-2 px-5 grid justify-items-center border border-1 border-gray-500 rounded-md'>
       <FormHeader text='Log In'/>
-      <Field type='text' name='firstName' placeholder='Enter your username (your email)' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'/>
+      <Field type='text' name='username' placeholder='Enter your username (your email)' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'/>
       {touched.username && errors.username && <div>{errors.username}</div>}
 
       <Field type='text' name='password' placeholder='Enter your password' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'/>
