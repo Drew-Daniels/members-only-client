@@ -57,7 +57,7 @@ export const LoginForm = withFormik<FormProps, FormValues>({
   },
 
   handleSubmit: async (values, { props: { setUser, navigate } }) => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/login`, {
+    fetch(`/api/login`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values)

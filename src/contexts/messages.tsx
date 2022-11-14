@@ -21,15 +21,12 @@ function MessagesProvider({ children }: MessagesProviderProps) {
     loadMessages();
 
     function loadMessages() {
-      // get data from backend api
-      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
-      })
+      fetch(`/api/messages`)
         .then(res => res.json())
         .then(res => {
           setMessages(res.messages)
         })
     }
-    // TODO: Reload messages from api when user state changes
   }, [user]);
 
   return (
@@ -39,7 +36,7 @@ function MessagesProvider({ children }: MessagesProviderProps) {
   )
 
   function refetchMessages() {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
+    fetch(`/api/messages`, {
     })
       .then(res => res.json())
       .then(res => {
