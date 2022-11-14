@@ -37,22 +37,22 @@ const InnerForm = (props: FormikProps<FormValues>) => {
     <Form className='bg-gray-800 rounded-b-md pb-2 px-5 grid justify-items-center border border-1 border-gray-500 rounded-md'>
       <FormHeader text='Sign up for Members Only!'/>
 
-      <Field type='text' name='firstName' placeholder='Enter your first name' />
+      <Field type='text' name='firstName' placeholder='Enter your first name' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'/>
       {touched.firstName && errors.firstName && <div>{errors.firstName}</div>}
 
-      <Field type='text' name='lastName' placeholder='Enter your last name' />
+      <Field type='text' name='lastName' placeholder='Enter your last name' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'/>
       {touched.lastName && errors.lastName && <div>{errors.lastName}</div>}
 
-      <Field type='email' name='username' placeholder='Create a username (must be an email)' />
+      <Field type='email' name='username' placeholder='Create a username (must be an email)' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'/>
       {touched.username && errors.username && <div>{errors.username}</div>}
 
-      <Field type='password' name='password' placeholder='Enter a strong password' />
+      <Field type='password' name='password' placeholder='Enter a strong password' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'/>
       {touched.password && errors.password && <div>{errors.password}</div>}
 
-      <Field type='password' name='passwordConfirm' placeholder='Confirm your strong password' />
+      <Field type='password' name='passwordConfirm' placeholder='Confirm your strong password' className='bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-10 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white'/>
       {touched.passwordConfirm && errors.passwordConfirm && <div>{errors.passwordConfirm}</div>}
 
-      <button type='submit' disabled={isSubmitting}>
+      <button type='submit' disabled={isSubmitting} className='bg-[#fc5f0a] py-2 px-4 my-2 rounded inline-flex items-center text-white' >
         Submit
       </button>
     </Form>
