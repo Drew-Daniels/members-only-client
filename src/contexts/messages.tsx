@@ -21,7 +21,7 @@ function MessagesProvider({ children }: MessagesProviderProps) {
     loadMessages();
 
     function loadMessages() {
-      fetch(`/api/messages`)
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`)
         .then(res => res.json())
         .then(res => {
           setMessages(res.messages)
@@ -36,7 +36,7 @@ function MessagesProvider({ children }: MessagesProviderProps) {
   )
 
   function refetchMessages() {
-    fetch(`/api/messages`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
     })
       .then(res => res.json())
       .then(res => {

@@ -8,7 +8,7 @@ export default function AuthWrapper({ children }: PropsWithChildren) {
     checkAuth();
 
     function checkAuth() {
-      fetch(`/api/auth`, {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/auth`, {
       })
         .then(res => res.json())
         .then(res => {

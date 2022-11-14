@@ -97,7 +97,7 @@ export const SignupForm = withFormik<FormProps, FormValues>({
   },
 
   handleSubmit: async (values, {props: { setUser, navigate }}) => {
-    fetch(`/api/signup`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)

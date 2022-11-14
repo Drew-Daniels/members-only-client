@@ -55,7 +55,7 @@ export const MessageForm = withFormik<FormProps, FormValues>({
   },
 
   handleSubmit: async (values, {props: {userId, refetchMessages}}) => {
-    fetch(`/api/messages`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/messages`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({...values, author: userId}),

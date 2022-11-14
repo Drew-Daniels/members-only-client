@@ -43,7 +43,7 @@ export const MembershipForm = withFormik<FormProps, FormValues>({
   },
 
   handleSubmit: async (values, { props: { setUser, navigate } }) => {
-    fetch(`/api/membership`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/membership`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
